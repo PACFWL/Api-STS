@@ -58,7 +58,7 @@ public class Desaparecido {
     @NotBlank(message = "Cor de Pele é requerido")
     private String corDePele;
     
-	public Desaparecido(Long id_desaparecido,
+	public Desaparecido(
 				String nomeCompletoDesaparecido,
 				String dataDeNascimento,
 				String dataDeDesaparecimento,
@@ -71,7 +71,6 @@ public class Desaparecido {
 				String doenca,
 				String sexo_desaparecido,
 				String corDePele) {
-		this.id_desaparecido = id_desaparecido;
 		this.nomeCompletoDesaparecido = nomeCompletoDesaparecido;
 		setDataDeNascimento(dataDeNascimento);
 		setDataDeDesaparecimento(dataDeDesaparecimento);
@@ -86,6 +85,10 @@ public class Desaparecido {
 		this.sexo_desaparecido = sexo_desaparecido;
 		this.corDePele = corDePele;
 	}
+	
+	public Desaparecido()
+	{
+}
 
 	public Long getId_desaparecido() {
 		return id_desaparecido;

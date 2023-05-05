@@ -44,7 +44,7 @@ public class MantemDesaparecidoI implements MantemDesaparecido {
 	@Override
 	public Optional<Desaparecido> consultaPorIdDesaparecido(Long id_desaparecido) {
 		logger.info(">>>>>> servico consultaPorId chamado");
-		return repositoryDesaparecido.findByIdDesaparecido(id_desaparecido);
+		return repositoryDesaparecido.findById(id_desaparecido);
 	}
 
 	@Override
