@@ -1,10 +1,11 @@
 # Api - Radar - Spring Boot (STS)
 ### Fatec ZL - Centro Paula Souza 
 ##### Disciplina - Programação Web III 
-Grupo __
-- [Ernesto](https://github.com/Erne1984)
-- [Leornado](https://github.com/Leohgb)
+Grupo 7
+- [Ernesto Amorim](https://github.com/Erne1984)
+- [Leornado Leal de Albuquerque](https://github.com/Leohgb)
 - [Pablo Angel Choque Flores](https://github.com/PACFWL)  
+- [Silas Leite](https://github.com/LeiteSS)
 ##### Processo de Desenvolvimento de Software - PDS
 > O Projeto Interdisciplinar segue uma abordagem interativa incremental adaptada do Scrum. Cada interação tem uma definição de pronto estabelecida com objetivo de controlar a qualidade. 
 ##### Estudo de Caso – Sistema Integrado de Gestão 
