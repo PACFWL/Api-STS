@@ -1,21 +1,25 @@
 package com.fatec.sig1.services;
 
 import java.util.List;
+
 import java.util.Optional;
+
 import com.fatec.sig1.model.Desaparecido;
 
 public interface MantemDesaparecido {
-	List<Desaparecido> consultaTodosDesaparecido();
 
-	Optional<Desaparecido> consultaPorCpfDesaparecido(String cpfDoDesaparecido);
+	List<Desaparecido> consultaTodosDs();
 
-	Optional<Desaparecido> consultaPorIdDesaparecido(Long id_desaparecido);
+	Optional<Desaparecido> consultaPorCpfdods(String cpfdods);
 
-	Optional<Desaparecido> saveDesaparecido(Desaparecido desaparecido);
+	Optional<Desaparecido> consultaPorIdds(Long idds);
 
-	void delete(Long id_desaparecido);
+	Optional<Desaparecido> saveDs(Desaparecido desaparecido);
 
-	Optional<Desaparecido> atualizaDesaparecido(Long id_desaparecido, Desaparecido desaparecido);
+	void delete(Long idds);
+
+	Optional<Desaparecido> atualizaDs(Long idds, Desaparecido desaparecido);
 
 	//Endereco obtemEndereco(String cep);
+
 }
