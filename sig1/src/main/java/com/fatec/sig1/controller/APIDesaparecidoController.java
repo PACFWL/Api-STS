@@ -42,7 +42,7 @@ import com.fatec.sig1.model.DesaparecidoDTO;
 
 //import com.fatec.sig1.model.Endereco;
 
-import com.fatec.sig1.services.MantemDesaparecido;
+import com.fatec.sig1.services.MantemDesaparecidoI;
 
 @RestController
 
