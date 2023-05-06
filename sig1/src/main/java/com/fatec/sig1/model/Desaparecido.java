@@ -1,6 +1,13 @@
 
 package com.fatec.sig1.model;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import javax.persistence.ElementCollection;
+
+import javax.persistence.Lob;
+
 import java.text.DateFormat;
 
 import java.text.ParseException;
@@ -39,172 +46,104 @@ import jakarta.persistence.Id;
 
 public class Desaparecido {
 
-		@Id
-
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long idds;
 
 	@NotBlank(message = "Nome do desaparecido é requerido")	
-
     private String nomeds;
 
 	@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\/-](0?[1-9]|1[012])[\\/-]\\d{4}$", message = "A data do desaparecimento deve estar no formato dd/MM/YYYY")    	
-
 	private String datadedst;
 
 	@Pattern(regexp = "^(0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$", message = "A hora do desaparecimento deve estar no formato HH:mm:ss")    
-
 	private String horadedst;
 
 	@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\/-](0?[1-9]|1[012])[\\/-]\\d{4}$", message = "A data de nascimento deve estar no formato dd/MM/YYYY")    
-
     private String datadenascimento;
 
     private String datadecadastrods;
 
     @CPF
-
 	@Column(unique = true) // nao funciona com @Valid tem que tratar na camada de persistencia
-
 	private String cpfdods;
 
 	@NotBlank(message = "Recompensa é requerido")	
-
     private String recompensadods;
-
-    
-
+ 
     /** 
-
     Usar Blob - Possibilidade
-
     **/
-
 	//@NotBlank(message = "URL da Foto Principal é requerido")	
-
     //private String urlfotoprincipal;
 
- 
-
 	@NotBlank(message = "Alt Text da Foto Principal é requerido")	
-
     private String alttxtfotoprincipal;
 
 	@NotBlank(message = "Descrição do desaparecimento é requerido")	
-
     private String descricaododst;
 
 	@NotBlank(message = "Doença é requerido")	
-
     private String doencadods;
 
     @NotBlank(message = "Sexo M/F")
-
     private String sexodods;
 
     @NotBlank(message = "Cor de Pele é requerido")
-
     private String cordepeledods;
 
     @NotBlank(message = "Peso é requerido")
-
     private double pesodods;
 
     @NotBlank(message = "Tatuagem é requerido")
-
     private boolean tatuagemdods;
 
     @NotBlank(message = "Cicatriz é requerido")
-
     private boolean cicatrizdods;
 
     @ElementCollection
-
 	@Lob
-
 	private List<byte[]> imagens;
 
-    
-
-    
-
-
-
 	public Desaparecido(
-
 				String nomeds,
-
 				String datadedst,
-
 				String horadedst,
-
 				String datadenascimento,
-
 				String cpfdods,
-
 				String recompensadods,
-
 				String alttxtfotoprincipal,
-
 				String descricaododst,
-
 				String doencadods,
-
 				String sexodods,
-
 				String cordepeledods,
-
 				double pesodods,
-
 				boolean tatuagemdods,
-
                 boolean cicatrizdods,
-
                 List<byte[]> imagens) {
-
 		this.nomeds = nomeds;
-
 		setDatadedst(datadedst);
-
 		setHoradedst(horadedst);
-
 		setDatadenascimento(datadenascimento);
-
 		setDatadecadastrods(new DateTime());
-
 		this.cpfdods = cpfdods;
-
         this.recompensadods = recompensadods;
-
 		this.alttxtfotoprincipal = alttxtfotoprincipal;
-
 		this.descricaododst = descricaododst;
-
-   	 this.doencadods = doencadods;
-
+   	 	this.doencadods = doencadods;
     	this.sexodods = sexodods;
-
     	this.cordepeledods = cordepeledods;
-
     	this.pesodods = pesodods;
-
-   	 this.tatuagemdods = tatuagemdods;
-
-   	 this.cicatrizdods = cicatrizdods;
-
-   	 this.imagens = imagens;
-
+   	 	this.tatuagemdods = tatuagemdods;
+   	 	this.cicatrizdods = cicatrizdods;
+   	 	this.imagens = imagens;
 	}
 
 	
 
 	public Desaparecido()
-
 	{
-
 		this.imagens = new ArrayList<>();
-
 }
 
 public Long getIdds() {
@@ -289,7 +228,7 @@ public String getDatadecadastrods() {
 
 }
 
-public void setDatadecadastrods(String datadecadastrods) {
+public void setDatadecadastrods(DateTime dataAtual) {
 
     this.datadecadastrods = obtemDataAtual(dataAtual);
 
@@ -422,83 +361,43 @@ public List<byte[]> getImagens() {
 }
 
 public void setImagens(List<byte[]> imagens) {
-
     this.imagens = imagens;
-
 }
 
 public boolean validaData(String data) {
 
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
 		df.setLenient(false); //
 
 		try {
 
 			df.parse(data); // data válida (exemplo 30 fev - 31 nov)
-
 			return true;
-
 		} catch (ParseException ex) {
-
 			return false;
-
 		}
-
 	}
 
 	public String obtemDataAtual(DateTime dataAtual) {
-
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
-
 		return dataAtual.toString(fmt);
-
 	}
 
     public boolean validaHora(String hora) {
-
     // create a new SimpleDateFormat object with the specified time format
-
     DateFormat df = new SimpleDateFormat("HH:mm:ss");
-
-    
-
     // set the lenient mode of the time format to false
-
     df.setLenient(false);
-
-    
-
     try {
-
         // attempt to parse the input time string using the time format
-
         df.parse(hora);
-
         // if the parse is successful, the time is valid and return true
-
         return true;
-
     } catch (ParseException ex) {
-
         // if the parse fails, the time is invalid and return false
-
         return false;
-
     }
 
 }
 
 }
-
-	
-	
-
-	
-
-	
-			
-    
-
-
-
