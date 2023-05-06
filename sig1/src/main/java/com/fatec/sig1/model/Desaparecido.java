@@ -4,9 +4,9 @@ package com.fatec.sig1.model;
 import java.util.List;
 import java.util.ArrayList;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.*
 
-import javax.persistence.Lob;
+//import javax.persistence.Lob;
 
 import java.text.DateFormat;
 
